@@ -1,52 +1,31 @@
-*Note to users of this template*: see the guidance here for setting up a paper repo: <https://github.com/AU-BCE-EE/GitHub-guidance/blob/main/paper-repos.md>.
-Delete this text and any other notes or example text that isn't relevant.
-
-# Your repo name here
-Repo summary here e.g., Repo for paper on measurement of ammonia emission from solid manure piles.
-We use this convention: `LastName-Year-PaperTopic` e.g., `Kamp-2024-NH3FluxMethods` or `Kamp-2024-NH3-flux` or `Kamp_2024_NH3_flux` etc.
+# Kamp-2026-Solid-storage-biochar
+Repo for paper on ammonia (NH3), methane (CH4), nitrous oxide (N2O) and CO2 emissions from stockpiled solid manure, comparing a pile covered with a biochar layer to an uncovered/no-biochar pile. Emission fluxes were derived from backward Lagrangian Stochastic (bLS) dispersion modelling combined with cavity ring-down spectroscopy (CRDS) gas concentration measurements. Measurements were conducted at Foulum in summer 2022.
 
 # Maintainer
-Your name.
-Contact information here: <https://au.dk/beginning_of_your_AU_email_address@bce.au.dk> (e.g., <https://au.dk/sasha.hafner@bce.au.dk>)
+Jesper Kamp.
+Contact information: <https://au.dk/jesper.kamp@bce.au.dk>
 
 # Published paper
-Give the bibliographic information and a link e.g., <https://doi.org/10.1016/j.aeaoa.2023.100205>, here.
-
-# Releases
-Add a note to users about releases here, e.g.: 
-
-See [Releases](https://github.com/AU-BCE-EE/template-paper/releases) for the latest release, or to find a release associated with a particular event.
-
-Be sure to use the correct URL!
+TBD.
 
 # Directory information
-Describe the repo directories here.
-For examples of more detailed data analysis template see <https://github.com/sashahafner/R-template/> and the links there for R, or <https://drivendata.github.io/cookiecutter-data-science/#directory-structure> for Python.
 
 ## scripts
-Include a description of subdirectory contents here if you keep this example subdirectory (recommended).
-For this one, you should describe the software needed to edit data and run scripts.
-Basic info on repeating the analysis is helpful too, e.g., "Run the script main.R in R to produce all output."
-See note on logs subdirectory as well.
+`MAPI2022_calc.m`: MATLAB script that loads the pre-processed emission timetables in `data/` (already background-subtracted and QC-filtered), combines them with temperature, oxygen and weather data, computes summary statistics, and produces the emission and concentration plots. Run it directly in MATLAB; paths are resolved relative to the script's own location, so no path editing is required.
 
-## logs
-You can include a log with software versions here.
+`load_Foulum_Weather_func.m`: helper function used by `MAPI2022_calc.m` to import the Foulum weather station data.
+
+Note: this repo does not include the raw-data treatment pipeline (raw CRDS/bLS instrument output, calibration, and QC filtering) that produced the intermediate `.mat` files in `data/` — only the pre-processed data needed to reproduce the statistics and plots.
+
+## data
+- `TT_emis_N.mat`, `TT_emis_S.mat`: pre-processed, background-subtracted emission timetables for the North (no biochar) and South (biochar) piles.
+- `TT_CRDS_BG_01_09_2023.mat`: background CRDS concentration timetable.
+- `FoulumVejr_2305_1608.csv`: Foulum weather station data.
+- `Oxygen content.xlsx`: oxygen content by depth for both piles.
+- `Temperature/`: pile temperature logger files (`.dat`).
 
 ## output
+Summary statistics (`stats.xlsx`) produced by `scripts/MAPI2022_calc.m`.
 
 ## plots
-
-# Links to published paper
-Explain where important paper components come from.
-This may even be helpful for your future self, when someone asks about the details of a particular calculation.
-A Markdown table makes this information easy to read.
-
-| Paper component              |  Repo source                             |  Repo scripts                          |
-|-----------------             |-----------------                         |---------------                         |
-|    Figure 1                  | `plots/01_some_plot.pdf`                 | `scripts/plots.R` and `scripts/main.R` |
-| Conf. interval for emission  | `stats/stats.pdf`                        | `scripts/stats.Rmd` and scripts/main.R`|
-
-
-
-
-
+Figures produced by `scripts/MAPI2022_calc.m` (when `SAVE_FIG` is enabled in the script).

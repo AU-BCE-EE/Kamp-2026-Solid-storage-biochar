@@ -1,3 +1,10 @@
+# MATLAB autosave files
+*.asv
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
 # History files
 .Rhistory
 .Rapp.history
