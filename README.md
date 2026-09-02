@@ -6,7 +6,8 @@ Jesper Kamp.
 Contact information: <https://au.dk/jesper.kamp@bce.au.dk>
 
 # Published paper
-TBD.
+Kamp et al., 2026, Lower methane emissions from full-scale stockpiles of the solid fraction of separated digested slurry with biochar amendment. Biosystems Engineering. 
+https://doi.org/10.1016/j.biosystemseng.2026.104585.
 
 # Directory information
 
